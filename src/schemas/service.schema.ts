@@ -37,7 +37,7 @@ export const documentRequiredSchema = z.object({
 
 /** Coerce legacy steps (string[] or old { text, link? }[]) to StepItem[] for backward compatibility. */
 const stepsSchema = z.preprocess(
-  (val) => {
+  (val: unknown) => {
     if (!Array.isArray(val) || val.length === 0) return val;
     const first = val[0];
     if (typeof first === "string") {
